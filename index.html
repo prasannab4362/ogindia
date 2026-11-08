@@ -40,6 +40,40 @@
     <button class="nav-menu" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </header>
 
+  <!-- Opening: zari threads weave across a silk saree, the OG India mark appears, then the saree opens fold by fold -->
+  <div class="saree-intro" id="sareeIntro" aria-hidden="true">
+    <div class="si-pleats" id="siPleats"></div>
+    <svg class="si-weave" id="siWeave" viewBox="0 0 1440 900" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="zari" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#8a5a12"/><stop offset=".35" stop-color="#f6d98b"/><stop offset=".5" stop-color="#fff3c4"/><stop offset=".65" stop-color="#f6d98b"/><stop offset="1" stop-color="#8a5a12"/>
+        </linearGradient>
+      </defs>
+      <g class="si-band" transform="translate(0 70)">
+        <path d="M0 0H1440"/><path d="M0 16H1440"/>
+        <path class="si-temple" d="M0 64 L30 22 L60 64 L90 22 L120 64 L150 22 L180 64 L210 22 L240 64 L270 22 L300 64 L330 22 L360 64 L390 22 L420 64 L450 22 L480 64 L510 22 L540 64 L570 22 L600 64 L630 22 L660 64 L690 22 L720 64 L750 22 L780 64 L810 22 L840 64 L870 22 L900 64 L930 22 L960 64 L990 22 L1020 64 L1050 22 L1080 64 L1110 22 L1140 64 L1170 22 L1200 64 L1230 22 L1260 64 L1290 22 L1320 64 L1350 22 L1380 64 L1410 22 L1440 64"/>
+        <path d="M0 70H1440"/><path d="M0 84H1440"/>
+      </g>
+      <g class="si-band" transform="translate(0 830) scale(1 -1)">
+        <path d="M0 0H1440"/><path d="M0 16H1440"/>
+        <path class="si-temple" d="M0 64 L30 22 L60 64 L90 22 L120 64 L150 22 L180 64 L210 22 L240 64 L270 22 L300 64 L330 22 L360 64 L390 22 L420 64 L450 22 L480 64 L510 22 L540 64 L570 22 L600 64 L630 22 L660 64 L690 22 L720 64 L750 22 L780 64 L810 22 L840 64 L870 22 L900 64 L930 22 L960 64 L990 22 L1020 64 L1050 22 L1080 64 L1110 22 L1140 64 L1170 22 L1200 64 L1230 22 L1260 64 L1290 22 L1320 64 L1350 22 L1380 64 L1410 22 L1440 64"/>
+        <path d="M0 70H1440"/><path d="M0 84H1440"/>
+      </g>
+      <g class="si-warp">
+        <path d="M240 160V740"/><path d="M480 160V740"/><path d="M720 160V740"/><path d="M960 160V740"/><path d="M1200 160V740"/>
+      </g>
+      <g class="si-weft">
+        <path d="M0 300C360 280 1080 320 1440 300"/><path d="M0 450C360 470 1080 430 1440 450"/><path d="M0 600C360 580 1080 620 1440 600"/>
+      </g>
+    </svg>
+    <div class="si-mark" id="siMark">
+      <img src="assets/og-badge.webp" alt="" width="190" height="190">
+      <p class="si-word">OG INDIA</p>
+      <p class="si-ta">மொத்தவிலை ஜவுளி கடை</p>
+    </div>
+    <button class="si-skip" id="siSkip">Skip ›</button>
+  </div>
+
   <main>
     <!-- 1 · HERO: opens on the showroom photo; scrolling zooms through a sequence of frames to the counter, then the film rolls -->
     <section class="hero seq" id="hero" data-sec="hero">

@@ -398,6 +398,50 @@
   }
   assetList.then(buildSequence, () => buildSequence([]));
 
+  /* ---------- Opening: zari threads weave across the silk saree, the mark appears, the saree opens fold by fold ---------- */
+  (() => {
+    const box = $('#sareeIntro');
+    if (!box) return;
+    let seen = false;
+    try { seen = sessionStorage.getItem('og-intro') === '1'; } catch (e) { /* storage blocked */ }
+    if (reducedMotion || seen || scrollY > innerHeight * 0.5) { box.remove(); return; }
+    // the saree: one fabric photo split into pleats that line up into a single continuous cloth
+    const N = mobile() ? 6 : 10;
+    $('#siPleats').innerHTML = Array.from({ length: N }, (_, i) =>
+      `<i class="si-pleat" style="left:${(i * 100) / N}%;width:${100 / N + 0.15}%;background-size:${N * 100}% 100%;background-position:${(i / (N - 1)) * 100}% 50%"></i>`).join('');
+    const pleats = $$('.si-pleat');
+    // weave: every gold thread draws itself in
+    const threads = $$('#siWeave path');
+    threads.forEach((p) => { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L; });
+    document.documentElement.classList.add('intro-lock');
+    const done = () => {
+      document.documentElement.classList.remove('intro-lock');
+      try { sessionStorage.setItem('og-intro', '1'); } catch (e) { /* ignore */ }
+      box.remove();
+      ScrollTrigger.refresh();
+    };
+    const mid = (N - 1) / 2;
+    const tl = gsap.timeline({ delay: 0.1, onComplete: done })
+      .to('.si-band path', { strokeDashoffset: 0, duration: 1.1, stagger: 0.06, ease: 'power2.inOut' }, 0)
+      .to('.si-warp path', { strokeDashoffset: 0, duration: 0.8, stagger: 0.08, ease: 'power1.inOut' }, 0.25)
+      .to('.si-weft path', { strokeDashoffset: 0, duration: 0.9, stagger: 0.1, ease: 'power1.inOut' }, 0.4)
+      .fromTo('#siMark', { opacity: 0, scale: 0.7, rotate: -8 }, { opacity: 1, scale: 1, rotate: 0, duration: 0.9, ease: 'back.out(1.6)' }, 0.55)
+      .fromTo('#siMark p', { opacity: 0, y: 14 }, { opacity: 1, y: 0, stagger: 0.12, duration: 0.5 }, 0.95)
+      .to(['#siMark', '.si-warp', '.si-weft'], { opacity: 0, scale: 0.96, duration: 0.45, ease: 'power2.in' }, 2.0)
+      .to('.si-band', { opacity: 0, duration: 0.5 }, 2.25)
+      .call(() => box.classList.add('opening'), null, 2.15)
+      // the saree opens: pleats fold away from the centre outwards, like cloth being unfurled
+      .to(pleats, { rotateY: (i) => (i < mid ? -96 : 96), x: (i) => (i < mid ? -30 : 30), opacity: 0.0,
+        duration: 1.0, ease: 'power3.inOut', stagger: { each: 0.06, from: 'center' } }, 2.2)
+      .fromTo('#seqFrames', { scale: 1.12 }, { scale: 1, duration: 1.6, ease: 'power3.out' }, 2.3)
+      .fromTo('.hero-copy > *', { opacity: 0, y: 34 }, { opacity: 1, y: 0, stagger: 0.08, duration: 0.7, ease: 'power3.out', clearProps: 'opacity,transform' }, 2.8);
+    const skip = () => tl.progress(1);
+    $('#siSkip').addEventListener('click', skip);
+    box.addEventListener('wheel', skip, { passive: true, once: true });
+    box.addEventListener('touchstart', skip, { passive: true, once: true });
+    setTimeout(() => { if (document.body.contains(box)) tl.progress(1); }, 7000);   // never leave the page locked
+  })();
+
   /* ---------- 2 · Six moods: expanding panels that open one by one in a loop ---------- */
   const moods = $$('.mood');
   let moodIdx = 0, moodTimer = null, moodHover = false;

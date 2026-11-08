@@ -229,3 +229,30 @@
   .mood-spine { writing-mode: horizontal-tb; transform: none; left: 62px; bottom: auto; top: 22px; }
   .mood-no { top: 14px; }
 }
+
+/* ---------- Opening: zari weave + the saree opening ---------- */
+.saree-intro { position: fixed; inset: 0; z-index: 300; background: #3a0610; overflow: hidden; }
+.si-pleats { position: absolute; inset: 0; perspective: 1300px; }
+.si-pleat { position: absolute; top: 0; bottom: 0; background-image: url("../assets/video/intro-silk.jpg"); background-repeat: no-repeat;
+  transform-origin: 50% 50%; backface-visibility: hidden; will-change: transform, opacity; }
+/* pleat shading: alternating soft light/dark folds so the cloth reads as a draped saree */
+.si-pleat::after { content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(40,4,8,.42), rgba(255,220,170,.08) 45%, rgba(40,4,8,.22)); }
+.si-pleat:nth-child(even)::after { background: linear-gradient(90deg, rgba(40,4,8,.22), rgba(255,220,170,.14) 55%, rgba(40,4,8,.4)); }
+.saree-intro::before { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 50%, rgba(40,4,8,.15), rgba(40,4,8,.7) 75%); }
+.si-weave { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; overflow: visible; }
+.si-weave path { fill: none; stroke: url(#zari); stroke-width: 3; stroke-linecap: round; vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 4px rgba(255,210,120,.55)); }
+.si-weave .si-temple { stroke-width: 2.5; }
+.si-warp path, .si-weft path { stroke-width: 1.4; opacity: .7; }
+.si-mark { position: absolute; left: 50%; top: 50%; z-index: 3; transform: translate(-50%, -50%); text-align: center; color: #fff7e6; }
+.si-mark img { width: clamp(140px, 17vw, 210px); height: auto; border-radius: 50%; margin: 0 auto; box-shadow: 0 0 0 3px rgba(246,217,139,.7), 0 0 60px rgba(255,200,110,.55), 0 20px 50px rgba(0,0,0,.5); }
+.si-word { font-family: var(--serif); font-weight: 700; font-size: clamp(1.9rem, 4.4vw, 3.4rem); letter-spacing: .24em; padding-left: .24em; margin-top: 1rem; text-shadow: 0 4px 24px rgba(0,0,0,.6); }
+.si-ta { font-family: var(--tamil); color: var(--gold-l); margin-top: .3rem; font-size: clamp(.95rem, 1.6vw, 1.2rem); text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+.si-skip { position: absolute; right: 22px; bottom: 22px; z-index: 4; border: 1px solid rgba(246,217,139,.5); background: rgba(20,3,5,.45); color: #fff3d6; border-radius: 999px; padding: .5rem 1rem; font-size: .8rem; letter-spacing: .1em; cursor: pointer; backdrop-filter: blur(6px); }
+@media (prefers-reduced-motion: reduce) { .saree-intro { display: none; } }
+/* while the saree opens, the backdrop melts away so the showroom shows through the folds */
+.saree-intro { transition: background-color .5s ease; }
+.saree-intro::before { transition: opacity .5s ease; }
+.saree-intro.opening { background-color: transparent; }
+.saree-intro.opening::before { opacity: 0; }
