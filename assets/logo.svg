@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 770 220" role="img" aria-label="OG India — Garments Wholesale">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbe3a0"/>
+      <stop offset=".5" stop-color="#d9a441"/>
+      <stop offset="1" stop-color="#9a6a1c"/>
+    </linearGradient>
+  </defs>
+  <!-- Gopuram arch monogram -->
+  <g transform="translate(20 10)">
+    <path d="M90 6 l7 14 h-14z" fill="url(#g)"/>
+    <circle cx="90" cy="26" r="5" fill="url(#g)"/>
+    <path d="M22 196 V96 Q22 40 90 34 Q158 40 158 96 V196" fill="#5a0b17" stroke="url(#g)" stroke-width="6"/>
+    <path d="M36 196 V100 Q36 54 90 48 Q144 54 144 100 V196" fill="none" stroke="url(#g)" stroke-width="2"/>
+    <text x="90" y="150" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-weight="700" font-size="66" fill="url(#g)" letter-spacing="-3">OG</text>
+    <path d="M52 172 h76" stroke="url(#g)" stroke-width="2"/>
+    <path d="M90 166 l6 6 -6 6 -6 -6z" fill="url(#g)"/>
+    <path d="M10 196 h160" stroke="url(#g)" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="218" y="132" font-family="'Cormorant Garamond', Georgia, serif" font-size="96" font-weight="700" letter-spacing="8" fill="#5a0b17">OG INDIA</text>
+  <g fill="#b07d24">
+    <path d="M222 168 h80" stroke="#b07d24" stroke-width="2"/>
+    <path d="M672 168 h80" stroke="#b07d24" stroke-width="2"/>
+    <text x="487" y="176" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="7">GARMENTS WHOLESALE</text>
+    <text x="487" y="208" text-anchor="middle" font-family="'Noto Serif Tamil', serif" font-size="17" font-weight="600" fill="#7a0f1e">மொத்தவிலை ஜவுளி கடை</text>
+  </g>
+</svg>

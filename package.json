@@ -1,0 +1,1 @@
+{"name":"kumars-only-garments","version":"2.0.0","private":true,"scripts":{"start":"node server.js","test":"node --test tests/hero-sequence.test.cjs","check":"node --check js/art.js && node --check js/data.js && node --check js/scenes.js && node --check js/main.js && node --check server.js"}}

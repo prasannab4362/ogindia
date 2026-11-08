@@ -1,0 +1,21 @@
+# local preview logs
+preview.log
+preview-error.log
+*.log
+
+# local tool settings
+.claude/
+
+# full-size image originals (the site uses the compressed copies in assets/products)
+assets/_originals/
+
+# earlier version and old branding, kept locally only
+_previous-version/
+
+# working review sheet
+image-review.png
+
+# OS / editor clutter
+Thumbs.db
+.DS_Store
+node_modules/
