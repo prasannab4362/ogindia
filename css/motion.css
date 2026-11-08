@@ -256,3 +256,7 @@
 .saree-intro::before { transition: opacity .5s ease; }
 .saree-intro.opening { background-color: transparent; }
 .saree-intro.opening::before { opacity: 0; }
+/* opening on phones: keep the name on one line */
+.si-mark { width: max-content; max-width: 92vw; }
+.si-word, .si-ta { white-space: nowrap; }
+@media (max-width: 760px) { .si-word { font-size: 1.7rem; letter-spacing: .16em; padding-left: .16em; } .si-ta { font-size: .95rem; } }

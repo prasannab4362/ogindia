@@ -264,7 +264,8 @@
 
   if (!window.gsap || !window.ScrollTrigger) { document.documentElement.classList.add('no-motion'); return; }
   gsap.registerPlugin(ScrollTrigger);
-  const mobile = () => innerWidth < 760;
+  // phone check that is reliable even before the mobile viewport settles (uses the real screen width too)
+  const mobile = () => Math.min(innerWidth, document.documentElement.clientWidth || innerWidth, screen.width || innerWidth) < 760;
   const goTo = (st, idx, n) => scrollTo({ top: st.start + (st.end - st.start) * (idx / (n - 1)) + 2, behavior: 'smooth' });
 
   ScrollTrigger.create({ start: 0, end: 'max', onUpdate: (s) => ($('.progress i').style.transform = `scaleX(${s.progress})`) });
@@ -411,6 +412,8 @@
       `<i class="si-pleat" style="left:${(i * 100) / N}%;width:${100 / N + 0.15}%;background-size:${N * 100}% 100%;background-position:${(i / (N - 1)) * 100}% 50%"></i>`).join('');
     const pleats = $$('.si-pleat');
     // weave: every gold thread draws itself in
+    // phones: crop the loom pattern instead of squashing it, so the temple triangles keep their shape
+    if (mobile()) $('#siWeave').setAttribute('preserveAspectRatio', 'xMidYMid slice');
     const threads = $$('#siWeave path');
     threads.forEach((p) => { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L; });
     document.documentElement.classList.add('intro-lock');
